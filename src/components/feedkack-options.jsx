@@ -1,20 +1,10 @@
-import styled from "styled-components";
-
-const FeedbackButton = ({onUpdate, name, children}) => {
-  return(
-    <button onClick={onUpdate} name={name}>{children}</button>
-  )
-};
-
-const Button = styled(FeedbackButton)``;
-
-export const FeedbackOptions = ({onLeaveFeedback}) => {
+export const FeedbackOptions = ({ options, onLeaveFeedback }) => {
   return (
-    <div>
-      <Button onUpdate={onLeaveFeedback} name={"good"}>good</Button>
-      <Button onUpdate={onLeaveFeedback} name={"neutral"}>neutral</Button>
-      <Button onUpdate={onLeaveFeedback} name={"bad"}>bad</Button>
-    </div>
+    <>
+      {options.map((option) => (
+        <button onClick={() => onLeaveFeedback (option)} key={option} type="button">{option}</button>
+      ))}
+    </>
   )
 }
 

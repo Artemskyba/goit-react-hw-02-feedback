@@ -12,11 +12,10 @@ export class App extends Component{
     bad: 0
   };
 
-  increment = (e) => {
+  onLeaveFeedback = (option) => {
     this.setState(prevState => {
-      const name = e.target.name
       return {
-        [name]: prevState[name] + 1,
+        [option]: prevState[option] + 1,
       }
     })
   }
@@ -28,7 +27,7 @@ export class App extends Component{
     return (
       <FeedbaksWrapper>
         <Section title={"Pleaseleave feebback"}>
-          <FeedbackOptions onLeaveFeedback={this.increment}/>
+          <FeedbackOptions options={Object.keys(this.state)} onLeaveFeedback={this.onLeaveFeedback}/>
         </Section>
         <Section title={"Statistics"}>
           <Statistics good={good} neutral={neutral} bad={bad} total={total} positive={positive}/>
